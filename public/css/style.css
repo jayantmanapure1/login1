@@ -100,7 +100,7 @@ header{
  }
  @media (max-width: 768px) {
    .outer{
-      height: 670px;
+      height: 770px;
       padding: 10px;
    }
    .reightheader{
