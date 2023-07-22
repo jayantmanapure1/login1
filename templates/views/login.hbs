@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{>headerLink}}
+  </head>
+  <body>
+   {{>navbar}}
+    <div class="container ">
+      <div class="row">
+         <div class="col-md-8 col-12 mx-auto outer mt-5">
+            <div class="row">
+               <div class="col-md-3 col-12 main_header_left">
+                  <img src="/static/images/rocket.png" alt="roc" class="roc">
+                  <h1 class="display-6">Welcome</h1>
+                  <p>In the complete MERN Backend Course</p>
+                  <form action="/register">
+                     <button type="submit" class="btn btn-outline-light ">Register</button>
+                  </form>
+                  
+               </div>
+               <div class="col-md-9 col-12 main_header_right mx-auto">
+                    <div class="reightheaderlogin">
+                     <div class="rh">
+                        <h3>Employee Login Form</h3>
+                     </div>
+                     <img src="/static/images/avatar.png" alt="av" class="av ms-auto me-auto mt-2">
+                     <form action="/login" method="POST">
+                     <div class="login">
+                      <div class="mt-2" >
+                        <input type="text" class="from-control" placeholder="Email" required name="email" class="input-lg">
+                      </div>  
+                     <div class="mt-2">
+                        <input type="password" class="from-control" placeholder="Password" required name="password" class="in">
+                     </div>
+                     
+                    
+                        <button type="submit" class="btn btn-outline-primary "> Sign In</button>
+                       
+                     
+                       </div>
+                     <label class="checkbox pull-left ms-3">
+                        <input type="checkbox" value="remember-me">
+                        Remember me
+                     </label>
+                    <a href="#" class="pull-right need-help">Need help?</a><span class="clearfix"></span>
+                   
+                      
+                  </form>
+                    </div>
+
+               </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   {{>footer}}
+  </body>
+</html>
