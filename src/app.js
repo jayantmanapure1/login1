@@ -1,10 +1,13 @@
+require('dotenv').config()
 const path = require('path');
+const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 const hbs = require('hbs');
 
 require("./db/conn")
 const Student =require ("./models/registerdata");
+const { Console } = require('console');
 const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use('/static',express.static('public'));
@@ -23,6 +26,7 @@ hbs.registerPartials(partials_path);
 app.use(express.urlencoded({extended:false}));
 //app.use(express.static(static_path))
 
+console.log(process.env.SECRET_KEY);
 
 app.get("/", (req,res)=>{
    res.render("login");
@@ -50,7 +54,11 @@ app.post("/register", async(req,res)=>{
          password:req.body.password,
          cpassword:req.body.cpassword
         })
+        console.log(registerEmployee);
+        const token = await registerEmployee.generateAuthToken();
+        console.log(token);
         const registered = await registerEmployee.save();
+        console.log(registered);
         res.status(201).render('login');
         
       }else{
@@ -67,8 +75,16 @@ app.post("/login", async (req, res) => {
       const email = req.body.email;
       const password = req.body.password;
       const useremail = await Student.findOne({ email: email });
+
       
-      if(useremail.password === password){
+
+      const isMatch = bcrypt.compare(password, useremail.password);
+      
+
+      const token = await useremail.generateAuthToken();
+      console.log(token);
+
+      if(isMatch){
          res.status(201).render('index');
       }else{
          res.send("Password are not match");
