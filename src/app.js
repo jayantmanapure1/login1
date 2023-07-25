@@ -26,7 +26,7 @@ hbs.registerPartials(partials_path);
 app.use(express.urlencoded({extended:false}));
 //app.use(express.static(static_path))
 
-console.log(process.env.SECRET_KEY);
+
 
 app.get("/", (req,res)=>{
    res.render("login");
